@@ -1,28 +1,38 @@
-import { Slider, Autocomplete, TextField, Select } from '@mui/material';
+import { Autocomplete, 
+  TextField, 
+  Select,
+  MenuItem, 
+  InputLabel, 
+  Stack  
+} from '@mui/material';
 import currencies from '../currencies';
+
 
 const Options = ({limit, handleLimit, currency, handleCurrency}) => {
   return (
-    <div>
-      <Slider
-        aria-label="Temperature"
-        valueLabelDisplay="auto"
-        step={50}
-        marks
-        min={50}
-        max={250}
-        onChange={e => handleLimit(e.target.value)}
-        value={limit}
-      />
+    <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
+      <InputLabel>N Results</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={limit}
+          label="Age"
+          onChange={e => handleLimit(e.target.value)}
+        >
+        <MenuItem value={50}>50</MenuItem>
+        <MenuItem value={100}>100</MenuItem>
+        <MenuItem value={150}>150</MenuItem>
+        <MenuItem value={200}>200</MenuItem>
+        <MenuItem value={250}>150</MenuItem>
+      </Select>
 
+      <InputLabel>Base currency</InputLabel>
       <Autocomplete
-        disablePortal
         options={currencies}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Base currency" />}
+        renderInput={(params) => <TextField {...params} label={currency}/>}
         onChange={(event, value) => handleCurrency(value)} 
       />
-    </div>
+    </Stack>
   )
 }
 

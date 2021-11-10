@@ -1,11 +1,16 @@
 import { DataGrid } from '@mui/x-data-grid';
 
 const CoinListing = ({ coins }) => {
-  
   const columns = [
     { field: 'image', headerName: '', editable: true, 
-    renderCell: (params) => <img src={params.value} alt="icon" width="50" height="50"/>
-    },
+    renderCell: (params) => {
+      return <img 
+        src={params.value} 
+        alt="icon" 
+        width="50" 
+        height="50"
+      />
+    }},
     { field: 'name', headerName: 'Name', flex: 1},
     { field: 'symbol', headerName: 'Symbol', flex: 1},
     { field: 'price', headerName: 'Price', flex: 1 },
