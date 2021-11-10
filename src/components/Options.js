@@ -1,4 +1,4 @@
-import { Autocomplete, 
+import { Autocomplete,
   TextField, 
   Select,
   MenuItem, 
@@ -8,23 +8,39 @@ import { Autocomplete,
 import currencies from '../currencies';
 
 
-const Options = ({limit, handleLimit, currency, handleCurrency}) => {
+const Options = ({
+  limit, 
+  handleLimit, 
+  currency, 
+  handleCurrency, 
+  orderBy, 
+  handleOrderBy}) => {
   return (
     <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
       <InputLabel>N Results</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
           value={limit}
-          label="Age"
+          label="Limit"
           onChange={e => handleLimit(e.target.value)}
         >
         <MenuItem value={50}>50</MenuItem>
         <MenuItem value={100}>100</MenuItem>
         <MenuItem value={150}>150</MenuItem>
         <MenuItem value={200}>200</MenuItem>
-        <MenuItem value={250}>150</MenuItem>
+        <MenuItem value={250}>250</MenuItem>
       </Select>
+
+
+      <InputLabel>Order by</InputLabel>
+        <Select
+          value={orderBy}
+          label="orderBy"
+          onChange={e => handleOrderBy(e.target.value)}
+        >
+        <MenuItem value={"market_cap_desc"}>Capacity</MenuItem>
+        <MenuItem value={"volume_desc"}>Volume</MenuItem>
+      </Select>
+
 
       <InputLabel>Base currency</InputLabel>
       <Autocomplete

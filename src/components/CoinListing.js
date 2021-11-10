@@ -1,4 +1,4 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarExport, GridToolbarContainer, gridClasses } from '@mui/x-data-grid';
 
 const CoinListing = ({ coins }) => {
   const columns = [
@@ -35,8 +35,16 @@ const CoinListing = ({ coins }) => {
     capacity: coin.market_cap,
     capacityChange: coin.market_cap_change_percentage_24h
   }));
-
   
+  const exportBar = () => {
+    return (
+      <GridToolbarContainer className={gridClasses.toolbarContainer}>
+        <GridToolbarExport csvOptions={{ fields: ['name', 'symbol', 'price', 'priceChange',
+        'high', 'low', 'volume', 'capacity', 'capacityChange'] }} />
+      </GridToolbarContainer>
+    );
+  }
+
   return (
     <div style={{ display: 'flex'}}>
       <div style={{ flexGrow: 1 }}>
@@ -46,7 +54,10 @@ const CoinListing = ({ coins }) => {
             pageSize={50}
             pagination
             rows={rows} 
-            columns={columns} 
+            columns={columns}
+            components={{
+              Toolbar: exportBar,
+            }}
           />
       </div>
     </div>
