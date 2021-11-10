@@ -1,4 +1,9 @@
-import { DataGrid, GridToolbarExport, GridToolbarContainer, gridClasses } from '@mui/x-data-grid';
+import { 
+  DataGrid, 
+  GridToolbarExport, 
+  GridToolbarContainer, 
+  gridClasses 
+} from '@mui/x-data-grid';
 
 const CoinListing = ({ coins }) => {
   const columns = [
@@ -13,14 +18,15 @@ const CoinListing = ({ coins }) => {
     }},
     { field: 'name', headerName: 'Name', flex: 1},
     { field: 'symbol', headerName: 'Symbol', flex: 1},
-    { field: 'price', headerName: 'Price', flex: 1 },
-    { field: 'priceChange', headerName: 'Price Change (%)', flex: 1 },
+    { field: 'price', headerName: 'Price', flex: 1},
+    { field: 'priceChange', headerName: 'Price Change (%)', flex: 1},
     { field: 'high', headerName: 'High', flex: 1},
-    { field: 'low', headerName: 'Low', flex: 1 },
+    { field: 'low', headerName: 'Low', flex: 1},
     { field: 'volume', headerName: 'Volume', flex: 1},
     { field: 'capacity', headerName: 'Capacity', flex: 1},
     { field: 'capacityChange', headerName: 'Capacity change (%)', flex: 1},
   ];
+
 
   const rows = coins.map(coin => ({
     image: coin.image,
@@ -48,17 +54,17 @@ const CoinListing = ({ coins }) => {
   return (
     <div style={{ display: 'flex'}}>
       <div style={{ flexGrow: 1 }}>
-          <DataGrid 
-            autoHeight
-            disableExtendRowFullWidth
-            pageSize={50}
-            pagination
-            rows={rows} 
-            columns={columns}
-            components={{
-              Toolbar: exportBar,
-            }}
-          />
+        <DataGrid 
+          autoHeight
+          disableExtendRowFullWidth
+          pageSize={50}
+          pagination
+          rows={rows} 
+          columns={columns}
+          components={{
+            Toolbar: exportBar
+          }}
+        />
       </div>
     </div>
   );

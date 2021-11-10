@@ -1,12 +1,13 @@
-import { Autocomplete,
+import { 
+  Autocomplete,
   TextField, 
   Select,
   MenuItem, 
   InputLabel, 
-  Stack  
+  Stack,
+  Slider
 } from '@mui/material';
 import currencies from '../currencies';
-
 
 const Options = ({
   limit, 
@@ -14,22 +15,10 @@ const Options = ({
   currency, 
   handleCurrency, 
   orderBy, 
-  handleOrderBy}) => {
+  handleOrderBy
+}) => {
   return (
     <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
-      <InputLabel>N Results</InputLabel>
-        <Select
-          value={limit}
-          label="Limit"
-          onChange={e => handleLimit(e.target.value)}
-        >
-        <MenuItem value={50}>50</MenuItem>
-        <MenuItem value={100}>100</MenuItem>
-        <MenuItem value={150}>150</MenuItem>
-        <MenuItem value={200}>200</MenuItem>
-        <MenuItem value={250}>250</MenuItem>
-      </Select>
-
 
       <InputLabel>Order by</InputLabel>
         <Select
@@ -37,8 +26,10 @@ const Options = ({
           label="orderBy"
           onChange={e => handleOrderBy(e.target.value)}
         >
-        <MenuItem value={"market_cap_desc"}>Capacity</MenuItem>
-        <MenuItem value={"volume_desc"}>Volume</MenuItem>
+
+        <MenuItem value={"current_price"}>Price</MenuItem>
+        <MenuItem value={"market_cap"}>Capacity</MenuItem>
+        <MenuItem value={"total_volume"}>Volume</MenuItem>
       </Select>
 
 
@@ -47,6 +38,20 @@ const Options = ({
         options={currencies}
         renderInput={(params) => <TextField {...params} label={currency}/>}
         onChange={(event, value) => handleCurrency(value)} 
+      />
+
+      <InputLabel>Number of results</InputLabel>
+      <Slider
+        sx={{width: '300px'}}
+        aria-label="Temperature"
+        defaultValue={limit}
+        valueLabelDisplay="auto"
+        marks
+        step={100}
+        min={100}
+        max={1000}
+        onChange={e => handleLimit(e.target.value)}
+        value={limit}
       />
     </Stack>
   )
