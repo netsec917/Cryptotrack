@@ -1,3 +1,4 @@
+import Currencies from '../misc/Currencies';
 import { 
   Autocomplete,
   TextField, 
@@ -7,7 +8,7 @@ import {
   Stack,
   Slider
 } from '@mui/material';
-import currencies from '../currencies';
+
 
 const Options = ({
   limit, 
@@ -35,7 +36,7 @@ const Options = ({
 
       <InputLabel>Base currency</InputLabel>
       <Autocomplete
-        options={currencies}
+        options={Currencies}
         renderInput={(params) => <TextField {...params} label={currency}/>}
         onChange={(event, value) => handleCurrency(value)} 
       />

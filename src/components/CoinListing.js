@@ -5,6 +5,7 @@ import {
   gridClasses 
 } from '@mui/x-data-grid';
 
+
 const CoinListing = ({ coins }) => {
   const columns = [
     { field: 'image', headerName: '', editable: true, 
@@ -26,7 +27,6 @@ const CoinListing = ({ coins }) => {
     { field: 'capacity', headerName: 'Capacity', flex: 1},
     { field: 'capacityChange', headerName: 'Capacity change (%)', flex: 1},
   ];
-
 
   const rows = coins.map(coin => ({
     image: coin.image,
