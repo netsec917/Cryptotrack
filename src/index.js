@@ -14,4 +14,4 @@ ReactDOM.render(
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
-); 
+);

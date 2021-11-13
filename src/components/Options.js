@@ -1,20 +1,19 @@
 import Currencies from '../misc/Currencies';
 import { 
   Autocomplete,
-  TextField, 
+  TextField,
   Select,
-  MenuItem, 
-  InputLabel, 
+  MenuItem,
+  InputLabel,
   Stack,
   Slider
 } from '@mui/material';
-
 
 const Options = ({
   limit, 
   handleLimit, 
   currency, 
-  handleCurrency, 
+  handleCurrency,
   orderBy, 
   handleOrderBy
 }) => {
@@ -22,12 +21,12 @@ const Options = ({
     <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
 
       <InputLabel>Order by</InputLabel>
-        <Select
-          value={orderBy}
-          label="orderBy"
-          onChange={e => handleOrderBy(e.target.value)}
-        >
-
+      <Select
+        sx={{width: "130px"}}
+        value={orderBy}
+        label="orderBy"
+        onChange={e => handleOrderBy(e.target.value)}
+      >
         <MenuItem value={"current_price"}>Price</MenuItem>
         <MenuItem value={"market_cap"}>Capacity</MenuItem>
         <MenuItem value={"total_volume"}>Volume</MenuItem>
@@ -36,6 +35,7 @@ const Options = ({
 
       <InputLabel>Base currency</InputLabel>
       <Autocomplete
+        sx={{width: "120px"}}
         options={Currencies}
         renderInput={(params) => <TextField {...params} label={currency}/>}
         onChange={(event, value) => handleCurrency(value)} 

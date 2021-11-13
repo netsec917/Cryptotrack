@@ -1,21 +1,12 @@
-import { 
-  DataGrid, 
-  GridToolbarExport, 
-  GridToolbarContainer, 
-  gridClasses 
-} from '@mui/x-data-grid';
-
+import { DataGrid } from '@mui/x-data-grid';
+import ExportBar from './ExportBar';
 
 const CoinListing = ({ coins }) => {
+  
   const columns = [
     { field: 'image', headerName: '', editable: true, 
     renderCell: (params) => {
-      return <img 
-        src={params.value} 
-        alt="icon" 
-        width="50" 
-        height="50"
-      />
+      return <img  src={params.value}  alt="icon" width="50" height="50" />
     }},
     { field: 'name', headerName: 'Name', flex: 1},
     { field: 'symbol', headerName: 'Symbol', flex: 1},
@@ -41,20 +32,11 @@ const CoinListing = ({ coins }) => {
     capacity: coin.market_cap,
     capacityChange: coin.market_cap_change_percentage_24h
   }));
-  
-  const exportBar = () => {
-    return (
-      <GridToolbarContainer className={gridClasses.toolbarContainer}>
-        <GridToolbarExport csvOptions={{ fields: ['name', 'symbol', 'price', 'priceChange',
-        'high', 'low', 'volume', 'capacity', 'capacityChange'] }} />
-      </GridToolbarContainer>
-    );
-  }
 
   return (
     <div style={{ display: 'flex'}}>
       <div style={{ flexGrow: 1 }}>
-        <DataGrid 
+        <DataGrid
           autoHeight
           disableExtendRowFullWidth
           pageSize={50}
@@ -62,7 +44,7 @@ const CoinListing = ({ coins }) => {
           rows={rows} 
           columns={columns}
           components={{
-            Toolbar: exportBar
+            Toolbar: ExportBar
           }}
         />
       </div>

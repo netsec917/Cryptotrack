@@ -1,16 +1,18 @@
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import cryptocurrencies from '../assets/cryptocurrencies.png'
+import { Stack } from '@mui/material';
 
 const Header = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Typography variant="h2" component="div" sx={{ flexGrow: 1 }}>
-          Cryptotrack
-        </Typography>
-      </AppBar>
-    </Box>
+    <AppBar position="static">
+      <Typography variant="h2" component="div" sx={{ flexGrow: 1, color: '#3c345c'}}>
+        <Stack direction="row" spacing={2} padding={1} alignContent="center" justifyContent="center">
+          <img src={cryptocurrencies} alt="icon" height="75" width="75"/>
+          <p>Cryptotrack</p>
+        </Stack>
+      </Typography>
+    </AppBar>
   );
 }
 
