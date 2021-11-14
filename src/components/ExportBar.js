@@ -8,7 +8,8 @@ const ExportBar = () => {
   return (
     <GridToolbarContainer className={gridClasses.toolbarContainer}>
       <GridToolbarExport csvOptions={{ fields: ['name', 'symbol', 'price', 'priceChange',
-        'high', 'low', 'volume', 'capacity', 'capacityChange'] }}/>
+        'high', 'low', 'volume', 'capacity', 'capacityChange'] }}
+      />
     </GridToolbarContainer>
   );
 };

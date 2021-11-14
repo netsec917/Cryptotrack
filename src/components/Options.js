@@ -10,8 +10,8 @@ import {
 } from '@mui/material';
 
 const Options = ({
-  limit, 
-  handleLimit, 
+  numResults, 
+  handleNumResults, 
   currency, 
   handleCurrency,
   orderBy, 
@@ -45,14 +45,14 @@ const Options = ({
       <Slider
         sx={{width: '300px'}}
         aria-label="Temperature"
-        defaultValue={limit}
+        defaultValue={numResults}
         valueLabelDisplay="auto"
         marks
         step={100}
         min={100}
         max={1000}
-        onChange={e => handleLimit(e.target.value)}
-        value={limit}
+        onChange={e => handleNumResults(e.target.value)}
+        value={numResults}
       />
     </Stack>
   )
