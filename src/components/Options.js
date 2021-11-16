@@ -9,23 +9,18 @@ import {
   Slider
 } from '@mui/material';
 
-const Options = ({
-  numResults, 
-  handleNumResults, 
-  currency, 
-  handleCurrency,
-  orderBy, 
-  handleOrderBy
-}) => {
+const Options = ({ opts, handleOpts }) => {
   return (
     <Stack spacing={2} direction="row" alignContent="center" justifyContent="center">
 
       <InputLabel>Order by</InputLabel>
       <Select
+        value={opts.orderBy}
         sx={{width: "130px"}}
-        value={orderBy}
-        label="orderBy"
-        onChange={e => handleOrderBy(e.target.value)}
+        onChange={e => handleOpts({
+          ...opts,
+          orderBy: e.target.value
+        })}
       >
         <MenuItem value={"current_price"}>Price</MenuItem>
         <MenuItem value={"market_cap"}>Capacity</MenuItem>
@@ -37,22 +32,31 @@ const Options = ({
       <Autocomplete
         sx={{width: "120px"}}
         options={Currencies}
-        renderInput={(params) => <TextField {...params} label={currency}/>}
-        onChange={(event, value) => handleCurrency(value)} 
+        renderInput={(params) => <TextField {...params} label={opts.currency}/>}
+        onChange={(event, value) => handleOpts(value !== null ? {
+          ...opts,
+          currency: value
+        } : {
+          ...opts,
+          currency: "GBP"
+        })} 
       />
 
       <InputLabel>Number of results</InputLabel>
       <Slider
+        value={opts.nResults}
         sx={{width: '300px'}}
         aria-label="Temperature"
-        defaultValue={numResults}
+        defaultValue={opts.nResults}
         valueLabelDisplay="auto"
         marks
         step={100}
         min={100}
         max={1000}
-        onChange={e => handleNumResults(e.target.value)}
-        value={numResults}
+        onChange={e => handleOpts({
+          ...opts,
+          nResults: e.target.value
+        })}
       />
     </Stack>
   )
