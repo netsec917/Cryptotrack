@@ -1,1 +1,6 @@
-# React cryptocurrency tracker
+# Cryptotrack
+
+## About
+
+
+## How to run locally
